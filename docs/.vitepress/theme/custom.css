@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+:root {
+  --vp-font-family-base: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --vp-layout-max-width: 1440px;
+
+  --vp-c-brand-1: #0f766e;
+  --vp-c-brand-2: #0d9488;
+  --vp-c-brand-3: #14b8a6;
+  --vp-c-brand-soft: rgba(20, 184, 166, 0.16);
+  --vp-c-accent-1: #f59e0b;
+  --vp-c-surface-1: rgba(255, 255, 255, 0.86);
+  --vp-c-surface-2: rgba(240, 253, 250, 0.92);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #0f766e 30%, #f59e0b 90%);
+  --vp-home-hero-image-background-image: radial-gradient(circle at 30% 20%, rgba(245, 158, 11, 0.28), transparent 40%), radial-gradient(circle at 70% 70%, rgba(20, 184, 166, 0.35), transparent 45%);
+  --vp-home-hero-image-filter: blur(46px);
+}
+
+.VPHome {
+  background:
+    radial-gradient(1000px 450px at 110% -5%, rgba(20, 184, 166, 0.14), transparent 60%),
+    radial-gradient(700px 350px at -10% 40%, rgba(245, 158, 11, 0.15), transparent 62%);
+}
+
+.VPHomeHero .name {
+  font-family: 'Space Grotesk', var(--vp-font-family-base);
+  letter-spacing: 0.01em;
+}
+
+.VPHomeHero .text {
+  font-weight: 700;
+}
+
+.VPHomeHero .tagline {
+  max-width: 700px;
+  font-size: 17px;
+}
+
+.VPHomeFeatures .item {
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(249, 250, 251, 0.96));
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.VPHomeFeatures .item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(13, 148, 136, 0.5);
+  box-shadow: 0 14px 24px rgba(13, 148, 136, 0.1);
+}
+
+.vp-doc .portal-lead {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--vp-c-text-2);
+}
+
+.portal-grid,
+.lesson-grid,
+.topic-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0 8px;
+}
+
+.topic-meta {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.portal-card,
+.lesson-card,
+.meta-card {
+  display: block;
+  padding: 18px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 118, 110, 0.16);
+  text-decoration: none;
+  background: linear-gradient(180deg, var(--vp-c-surface-1), rgba(249, 250, 251, 0.98));
+  color: var(--vp-c-text-1);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.portal-card:hover,
+.lesson-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(13, 148, 136, 0.5);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), var(--vp-c-surface-2));
+  box-shadow: 0 18px 40px rgba(13, 148, 136, 0.1);
+}
+
+.card-kicker,
+.lesson-index {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--vp-c-brand-1);
+  text-transform: uppercase;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.card-title-row strong,
+.lesson-card strong,
+.meta-card strong {
+  font-size: 18px;
+}
+
+.topic-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.25), rgba(245, 158, 11, 0.32));
+  color: #134e4a;
+  font-family: 'Space Grotesk', var(--vp-font-family-base);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.portal-card p,
+.lesson-card p,
+.meta-card p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.75;
+}
+
+.card-list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: var(--vp-c-text-2);
+}
+
+.card-list li + li {
+  margin-top: 8px;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+}
+
+.route-audience {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.audience-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.12);
+  color: #115e59;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.portal-note {
+  margin: 24px 0;
+  padding: 20px 22px;
+  border: 1px solid rgba(15, 118, 110, 0.14);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 250, 0.92));
+}
+
+.portal-note p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.8;
+}
+
+.portal-note p + p {
+  margin-top: 10px;
+}
+
+.portal-note code {
+  font-size: 13px;
+}
+
+.meta-card {
+  min-height: 100%;
+}
+
+.meta-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--vp-c-text-1);
+}
+
+.lesson-card {
+  min-height: 100%;
+}
+
+.lesson-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.vp-doc a.portal-card,
+.vp-doc a.lesson-card {
+  text-decoration: none;
+}
+
+.vp-doc .portal-grid + h2,
+.vp-doc .lesson-grid + h2 {
+  margin-top: 28px;
+}
+
+.vp-doc h1 {
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h1,
+.vp-doc h2 {
+  font-family: 'Space Grotesk', var(--vp-font-family-base);
+}
+
+@media (max-width: 768px) {
+  .VPHomeHero .tagline {
+    font-size: 15px;
+  }
+
+  .portal-grid,
+  .lesson-grid,
+  .topic-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-card,
+  .lesson-card,
+  .meta-card,
+  .portal-note {
+    padding: 16px 18px;
+  }
+}
