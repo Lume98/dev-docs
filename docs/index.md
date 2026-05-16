@@ -4,24 +4,26 @@ layout: home
 hero:
   name: dev-docs
   text: Kotlin 学习文档
-  tagline: 当前已上线 Kotlin 专题与 7 天入门路径，适合按顺序完成语法、空安全、集合、协程和综合实战。
+  tagline: 当前已上线 Kotlin 5 模块学习体系，适合按顺序完成语法、类型系统、面向对象、集合函数式与协程工程实践。
   actions:
     - theme: brand
-      text: 查看当前专题
+      text: 查看 Kotlin 专题
       link: /topics/kotlin/
     - theme: alt
-      text: 从 7 天教程开始
-      link: /topics/kotlin/7-days/
+      text: 进入模块总览
+      link: /topics/kotlin/modules/
 ---
 
 <script setup>
-import { learningPaths, topics } from './.vitepress/site-data'
+import { topics } from './.vitepress/site-data'
+
+const kotlinTopic = topics.find((topic) => topic.slug === 'kotlin')
 </script>
 
 ## 已上线专题
 
 <p class="portal-lead">
-  现在可以直接查看 Kotlin 专题概览，先了解会学什么，再进入具体学习路径。
+  现在可以直接查看 Kotlin 专题概览，先了解模块学习目标，再进入具体模块完成练习与验收。
 </p>
 
 <div class="portal-grid">
@@ -46,20 +48,20 @@ import { learningPaths, topics } from './.vitepress/site-data'
 
 ## 从这里开始
 
-<div class="portal-note">
-  <p>如果你想系统入门 Kotlin，建议先完成 7 天教程。每天都有明确目标、示例代码和练习，适合按顺序推进。</p>
+<div class="portal-note" v-if="kotlinTopic">
+  <p>建议从模块总览进入，按模块 1 到模块 5 的顺序推进。每个模块都包含学习目标、示例代码、常见误区与验收标准。</p>
 </div>
 
-<div class="lesson-grid">
+<div class="lesson-grid" v-if="kotlinTopic">
   <a
-    v-for="(path, index) in learningPaths"
-    :key="path.slug"
+    v-for="(module, index) in kotlinTopic.modules"
+    :key="module.slug"
     class="lesson-card"
-    :href="path.link"
+    :href="module.link"
   >
-    <div class="lesson-index">Path {{ String(index + 1).padStart(2, '0') }}</div>
-    <strong>{{ path.title }}</strong>
-    <p>{{ path.summary }}</p>
-    <span class="card-link">查看路径目录</span>
+    <div class="lesson-index">Module {{ String(index + 1).padStart(2, '0') }}</div>
+    <strong>{{ module.title }}</strong>
+    <p>{{ module.summary }}</p>
+    <span class="card-link">进入模块</span>
   </a>
 </div>
