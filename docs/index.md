@@ -3,15 +3,15 @@ layout: home
 
 hero:
   name: dev-docs
-  text: Kotlin 学习文档
-  tagline: 当前已上线 Kotlin 5 模块学习体系，适合按顺序完成语法、类型系统、面向对象、集合函数式与协程工程实践。
+  text: 开发者文档
+  tagline: Kotlin 模块化学习体系与 VS Code 扩展开发完整指南，涵盖语法基础到扩展 API 参考。
   actions:
     - theme: brand
       text: 查看 Kotlin 专题
       link: /topics/kotlin/
     - theme: alt
-      text: 进入模块总览
-      link: /topics/kotlin/modules/
+      text: VS Code 扩展开发
+      link: /vscode/extension/
 ---
 
 <script setup>
@@ -23,7 +23,7 @@ const kotlinTopic = topics.find((topic) => topic.slug === 'kotlin')
 ## 已上线专题
 
 <p class="portal-lead">
-  现在可以直接查看 Kotlin 专题概览，先了解模块学习目标，再进入具体模块完成练习与验收。
+  Kotlin 模块化学习体系，按顺序掌握语法、类型系统、面向对象、集合函数式与协程工程实践。
 </p>
 
 <div class="portal-grid">
@@ -43,6 +43,30 @@ const kotlinTopic = topics.find((topic) => topic.slug === 'kotlin')
       <li v-for="highlight in topic.highlights" :key="highlight">{{ highlight }}</li>
     </ul>
     <span class="card-link">进入 {{ topic.title }} 专题</span>
+  </a>
+</div>
+
+## VS Code 扩展开发
+
+<p class="portal-lead">
+  从零开始学习 VS Code 扩展开发，涵盖入门指南、扩展能力、AI 集成、语言扩展、调试发布等完整内容。
+</p>
+
+<div class="portal-grid">
+  <a class="portal-card" href="/vscode/extension/">
+    <div class="card-kicker">Docs</div>
+    <div class="card-title-row">
+      <span class="topic-badge">VSCE</span>
+      <strong>VS Code Extension API</strong>
+    </div>
+    <p>完整的 VS Code 扩展开发文档，包含 8 大章节 70+ 篇文档。</p>
+    <ul class="card-list">
+      <li>入门指南与扩展结构解析</li>
+      <li>命令、主题、Webview 等扩展能力</li>
+      <li>AI、MCP、Language Model 前沿集成</li>
+      <li>语言服务器、调试器、测试与发布</li>
+    </ul>
+    <span class="card-link">进入 VS Code 扩展文档</span>
   </a>
 </div>
 

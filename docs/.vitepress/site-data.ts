@@ -102,13 +102,180 @@ export const topics: Topic[] = [
 ]
 
 export const siteTitle = 'dev-docs'
-export const siteDescription = 'Kotlin 模块化学习专题，帮助你按顺序掌握语法、类型系统、集合函数式与协程工程实践。'
+export const siteDescription = 'Kotlin 模块化学习专题与 VS Code 扩展开发文档，帮助你掌握 Kotlin 语法与 VS Code 扩展 API。'
 
 export const nav: DefaultTheme.NavItem[] = [
   { text: '首页', link: '/' },
   { text: '技术专题', link: topics[0].link },
-  { text: '模块目录', link: '/topics/kotlin/modules/' }
+  { text: '模块目录', link: '/topics/kotlin/modules/' },
+  { text: 'VS Code 扩展', link: '/vscode/extension/' }
 ]
+
+// ---- VS Code Extension API Docs ----
+
+export type ApiPage = {
+  title: string
+  link: string
+}
+
+export type ApiSection = {
+  name: string
+  pages: ApiPage[]
+  children?: ApiSection[]
+}
+
+const prefix = '/vscode/extension'
+
+export const apiSections: ApiSection[] = [
+  {
+    name: 'Get Started',
+    pages: [
+      { title: 'Your First Extension', link: `${prefix}/get-started/your-first-extension` },
+      { title: 'Extension Anatomy', link: `${prefix}/get-started/extension-anatomy` },
+      { title: 'Wrapping Up', link: `${prefix}/get-started/wrapping-up` }
+    ]
+  },
+  {
+    name: 'Extension Capabilities',
+    pages: [
+      { title: 'Overview', link: `${prefix}/extension-capabilities/overview` },
+      { title: 'Common Capabilities', link: `${prefix}/extension-capabilities/common-capabilities` },
+      { title: 'Theming', link: `${prefix}/extension-capabilities/theming` },
+      { title: 'Extending Workbench', link: `${prefix}/extension-capabilities/extending-workbench` }
+    ]
+  },
+  {
+    name: 'Extension Guides',
+    pages: [
+      { title: 'Overview', link: `${prefix}/extension-guides/overview` },
+      { title: 'Command', link: `${prefix}/extension-guides/command` },
+      { title: 'Color Theme', link: `${prefix}/extension-guides/color-theme` },
+      { title: 'File Icon Theme', link: `${prefix}/extension-guides/file-icon-theme` },
+      { title: 'Product Icon Theme', link: `${prefix}/extension-guides/product-icon-theme` },
+      { title: 'Tree View', link: `${prefix}/extension-guides/tree-view` },
+      { title: 'Webview', link: `${prefix}/extension-guides/webview` },
+      { title: 'Notebook', link: `${prefix}/extension-guides/notebook` },
+      { title: 'Custom Editors', link: `${prefix}/extension-guides/custom-editors` },
+      { title: 'Virtual Documents', link: `${prefix}/extension-guides/virtual-documents` },
+      { title: 'Virtual Workspaces', link: `${prefix}/extension-guides/virtual-workspaces` },
+      { title: 'Web Extensions', link: `${prefix}/extension-guides/web-extensions` },
+      { title: 'Workspace Trust', link: `${prefix}/extension-guides/workspace-trust` },
+      { title: 'Task Provider', link: `${prefix}/extension-guides/task-provider` },
+      { title: 'Source Control', link: `${prefix}/extension-guides/scm-provider` },
+      { title: 'Debugger Extension', link: `${prefix}/extension-guides/debugger-extension` },
+      { title: 'Markdown Extension', link: `${prefix}/extension-guides/markdown-extension` },
+      { title: 'Test Extension', link: `${prefix}/extension-guides/testing` },
+      { title: 'Custom Data Extension', link: `${prefix}/extension-guides/custom-data-extension` },
+      { title: 'Telemetry', link: `${prefix}/extension-guides/telemetry` }
+    ],
+    children: [
+      {
+        name: 'AI',
+        pages: [
+          { title: 'AI Extensibility', link: `${prefix}/extension-guides/ai/ai-extensibility-overview` },
+          { title: 'Language Model Tool', link: `${prefix}/extension-guides/ai/tools` },
+          { title: 'MCP Dev Guide', link: `${prefix}/extension-guides/ai/mcp` },
+          { title: 'Chat Participant', link: `${prefix}/extension-guides/ai/chat` },
+          { title: 'Chat Tutorial', link: `${prefix}/extension-guides/ai/chat-tutorial` },
+          { title: 'Language Model', link: `${prefix}/extension-guides/ai/language-model` },
+          { title: 'Language Model Tutorial', link: `${prefix}/extension-guides/ai/language-model-tutorial` },
+          { title: 'Language Model Chat Provider', link: `${prefix}/extension-guides/ai/language-model-chat-provider` },
+          { title: 'Prompt TSX', link: `${prefix}/extension-guides/ai/prompt-tsx` }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'UX Guidelines',
+    pages: [
+      { title: 'Overview', link: `${prefix}/ux-guidelines/overview` },
+      { title: 'Activity Bar', link: `${prefix}/ux-guidelines/activity-bar` },
+      { title: 'Sidebars', link: `${prefix}/ux-guidelines/sidebars` },
+      { title: 'Panel', link: `${prefix}/ux-guidelines/panel` },
+      { title: 'Status Bar', link: `${prefix}/ux-guidelines/status-bar` },
+      { title: 'Views', link: `${prefix}/ux-guidelines/views` },
+      { title: 'Editor Actions', link: `${prefix}/ux-guidelines/editor-actions` },
+      { title: 'Quick Picks', link: `${prefix}/ux-guidelines/quick-picks` },
+      { title: 'Command Palette', link: `${prefix}/ux-guidelines/command-palette` },
+      { title: 'Notifications', link: `${prefix}/ux-guidelines/notifications` },
+      { title: 'Webviews', link: `${prefix}/ux-guidelines/webviews` },
+      { title: 'Context Menus', link: `${prefix}/ux-guidelines/context-menus` },
+      { title: 'Walkthroughs', link: `${prefix}/ux-guidelines/walkthroughs` },
+      { title: 'Settings', link: `${prefix}/ux-guidelines/settings` }
+    ]
+  },
+  {
+    name: 'Language Extensions',
+    pages: [
+      { title: 'Overview', link: `${prefix}/language-extensions/overview` },
+      { title: 'Syntax Highlight Guide', link: `${prefix}/language-extensions/syntax-highlight-guide` },
+      { title: 'Semantic Highlight Guide', link: `${prefix}/language-extensions/semantic-highlight-guide` },
+      { title: 'Snippet Guide', link: `${prefix}/language-extensions/snippet-guide` },
+      { title: 'Language Configuration Guide', link: `${prefix}/language-extensions/language-configuration-guide` },
+      { title: 'Programmatic Language Features', link: `${prefix}/language-extensions/programmatic-language-features` },
+      { title: 'Language Server Extension Guide', link: `${prefix}/language-extensions/language-server-extension-guide` },
+      { title: 'Embedded Languages', link: `${prefix}/language-extensions/embedded-languages` }
+    ]
+  },
+  {
+    name: 'Testing and Publishing',
+    pages: [
+      { title: 'Testing Extensions', link: `${prefix}/working-with-extensions/testing-extension` },
+      { title: 'Publishing Extensions', link: `${prefix}/working-with-extensions/publishing-extension` },
+      { title: 'Bundling Extensions', link: `${prefix}/working-with-extensions/bundling-extension` },
+      { title: 'Continuous Integration', link: `${prefix}/working-with-extensions/continuous-integration` }
+    ]
+  },
+  {
+    name: 'Advanced Topics',
+    pages: [
+      { title: 'Extension Host', link: `${prefix}/advanced-topics/extension-host` },
+      { title: 'Remote Development and Codespaces', link: `${prefix}/advanced-topics/remote-extensions` },
+      { title: 'Using Proposed API', link: `${prefix}/advanced-topics/using-proposed-api` },
+      { title: 'Migrate from TSLint to ESLint', link: `${prefix}/advanced-topics/tslint-eslint-migration` },
+      { title: 'Python Extension Template', link: `${prefix}/advanced-topics/python-extension-template` }
+    ]
+  },
+  {
+    name: 'References',
+    pages: [
+      { title: 'VS Code API', link: `${prefix}/references/vscode-api` },
+      { title: 'Contribution Points', link: `${prefix}/references/contribution-points` },
+      { title: 'Activation Events', link: `${prefix}/references/activation-events` },
+      { title: 'Extension Manifest', link: `${prefix}/references/extension-manifest` },
+      { title: 'Built-In Commands', link: `${prefix}/references/commands` },
+      { title: 'When Clause Contexts', link: `${prefix}/references/when-clause-contexts` },
+      { title: 'Theme Color', link: `${prefix}/references/theme-color` },
+      { title: 'Product Icon Reference', link: `${prefix}/references/icons-in-labels` },
+      { title: 'Document Selector', link: `${prefix}/references/document-selector` }
+    ]
+  }
+]
+
+function buildApiSidebar(): DefaultTheme.SidebarItem[] {
+  const result: DefaultTheme.SidebarItem[] = [
+    { text: 'VS Code Extension API', link: `${prefix}/` }
+  ]
+
+  for (const section of apiSections) {
+    const items: DefaultTheme.SidebarItem[] = [
+      ...section.pages.map((page) => ({
+        text: page.title,
+        link: page.link
+      })),
+      ...(section.children?.map((child) => ({
+        text: child.name,
+        items: child.pages.map((page) => ({
+          text: page.title,
+          link: page.link
+        }))
+      })) ?? [])
+    ]
+    result.push({ text: section.name, items })
+  }
+
+  return result
+}
 
 function buildTopicSidebar(topic: Topic): DefaultTheme.SidebarItem[] {
   return [
@@ -129,10 +296,13 @@ function buildTopicSidebar(topic: Topic): DefaultTheme.SidebarItem[] {
   ]
 }
 
-const sidebarEntries: Array<[string, DefaultTheme.SidebarItem[]]> = topics.flatMap((topic) => [
-  [`/topics/${topic.slug}/`, buildTopicSidebar(topic)],
-  [`/topics/${topic.slug}/modules/`, buildTopicSidebar(topic)]
-])
+const sidebarEntries: Array<[string, DefaultTheme.SidebarItem[]]> = [
+  ...topics.flatMap((topic) => [
+    [`/topics/${topic.slug}/`, buildTopicSidebar(topic)],
+    [`/topics/${topic.slug}/modules/`, buildTopicSidebar(topic)]
+  ]),
+  ['/vscode/extension/', buildApiSidebar()]
+]
 
 export const sidebar: DefaultTheme.Sidebar = Object.fromEntries(sidebarEntries)
 

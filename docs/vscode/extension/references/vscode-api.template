@@ -1,0 +1,67 @@
+---
+title: VS Code API
+description: Visual Studio Code 扩展（插件）API 参考。
+---
+
+# VS Code API
+
+**VS Code API** 是一组可在 Visual Studio Code 扩展中调用的 JavaScript API。本页面列出了扩展作者可使用的所有 VS Code API。
+
+## API 命名空间和类
+
+本列表编译自 VS Code 仓库中的 [vscode.d.ts](https://github.com/microsoft/vscode/blob/main/src/vscode-dts/vscode.d.ts) 文件。
+
+{$ Content $}
+
+## API 模式
+
+以下是 VS Code API 中使用的一些常见模式。
+
+### Promise
+
+VS Code API 使用 [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) 来表示异步操作。扩展可以返回**任意**类型的 Promise，如 ES6、WinJS、A+ 等。
+
+不依赖特定 Promise 库的特性在 API 中通过 `Thenable` 类型来体现。`Thenable` 代表它们的共同特征，即 [then](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) 方法。
+
+在大多数情况下，Promise 的使用是可选的。当 VS Code 调用扩展时，可以处理_结果类型_，也可以处理结果类型的 `Thenable`。当 Promise 的使用为可选时，API 会通过返回 `or` 类型来表示。
+
+```typescript
+provideNumber(): number | Thenable<number>
+```
+
+### 取消令牌
+
+许多操作在易变的状态上启动，而状态可能在操作完成之前就发生了变化。例如，IntelliSense 计算开始后，用户继续输入，导致之前的计算结果变得过时。
+
+涉及此行为的 API 会接收一个 `CancellationToken` 参数，你可以通过它检查是否已取消（`isCancellationRequested`），或者在取消发生时收到通知（`onCancellationRequested`）。取消令牌通常是函数调用的最后一个参数，且为可选参数。
+
+### 可释放对象
+
+VS Code API 对从 VS Code 获取的资源使用[释放模式（Dispose pattern）](https://en.wikipedia.org/wiki/Dispose_pattern)。这适用于事件监听、命令、UI 交互以及各种语言功能贡献。
+
+例如，`setStatusBarMessage(value: string)` 函数返回一个 `Disposable`，调用其 `dispose` 方法即可移除该消息。
+
+### 事件
+
+VS Code API 中的事件以函数形式暴露，你通过传入监听函数来订阅。订阅调用返回一个 `Disposable`，调用其 `dispose` 方法即可移除事件监听器。
+
+```javascript
+var listener = function(event) {
+    console.log("It happened", event);
+};
+
+// 开始监听
+var subscription = fsWatcher.onDidDelete(listener);
+
+// 执行更多操作
+
+subscription.dispose(); // 停止监听
+```
+
+事件名称遵循 `on[Will|Did]VerbNoun?` 模式。名称标明事件是即将发生 *(onWill)* 还是已经发生 *(onDid)*，发生了什么 *(verb)*，以及上下文 *(noun)*（如果上下文不明显的话）。
+
+VS Code API 中的一个示例是 `window.onDidChangeActiveTextEditor`，该事件在活动文本编辑器 *(noun)* 已被 *(onDid)* 更改 *(verb)* 时触发。
+
+### 严格空值
+
+VS Code API 在适当的地方使用 `undefined` 和 `null` TypeScript 类型，以支持[严格空值检查](https://github.com/microsoft/TypeScript/pull/7140)。
